@@ -9,14 +9,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.ui.StyledPlayerView;
+import androidx.media3.common.MediaItem;
+import androidx.media3.common.Player;
+import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.ui.PlayerView;
 
 public class MainActivity extends Activity {
 
-    private StyledPlayerView styledPlayerView;
+    private PlayerView playerView;
 
     private ExoPlayer exoPlayer;
     private Uri uri, cUri;
@@ -29,10 +29,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        styledPlayerView = findViewById(R.id.idExoPlayerVIew);
+        playerView = findViewById(R.id.PlayerView);
 
         exoPlayer = new ExoPlayer.Builder(this).build();
-        styledPlayerView.setPlayer(exoPlayer);
+        playerView.setPlayer(exoPlayer);
 
         uri = getIntent().getData();
         if (uri != null) initializePlayer();
@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
         runOnUiThread(() -> {
             exoPlayer.stop();
             exoPlayer = new ExoPlayer.Builder(this).build();
-            styledPlayerView.setPlayer(exoPlayer);
+            playerView.setPlayer(exoPlayer);
             if (uri != null) exoPlayer.addMediaItem(MediaItem.fromUri(uri));
             exoPlayer.prepare();
             exoPlayer.setPlayWhenReady(true);

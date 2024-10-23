@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.yuuna.videoplayer'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.yuuna.videoplayer"
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
         resValue "string", "app_name", "Video Player"
@@ -29,6 +29,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
+    implementation 'androidx.media3:media3-exoplayer:1.4.1'
+    implementation 'androidx.media3:media3-ui:1.4.1'
 }
